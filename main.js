@@ -12,10 +12,72 @@ const jobTypes = {
 // Your code will go here
 
 
+//name, a job, a specialSkill and ship upon instantiation
+class CrewMember {
+  constructor(name, job, specialSkill, ship){
+    this.name = name;
+    this.job = job;
+    this.specialSkill = specialSkill;
+    this.ship = ship;
+  }
+
+  enterShip(boat) {
+    this.ship = boat;
+    //push the incoming ship into the crews 
+    // boat.push(mav)
+    this.ship.crew.push(this) //we are taking the object ship within our CrewMember object and pushing the crew into the empty crew array for ship
+  }
+
+}
+
+
+
+class Ship { //create Ship object
+  constructor(name, type, ability, crew) {
+    this.name = name;
+    this.type = type;
+    this.ability = ability;
+    this.crew = []; //this is an array since it asks for length and there will be more than 1 crew member
+  }
+
+
+ 
+  missionStatement = (mission) => {
+    //going to need at least 1 crew member to have a mission, the crew array must be 1
+    // this.ability = mission;
+    // this.ability.type.push(this)
+    if (this.crew.length === 0) { //if crew = 0 then we will not be able to perform a mission
+      return "Can't perform a mission yet.";
+    } else {
+      // this.type.ability.push(this)
+      return this.ability; //the mission statement is the same as the ability within our Ship object
+    }
+  }
+}
+
+
+const crewMember1 = new CrewMember("Rick Martinez", "pilot", "chemistry", null);
+
+const mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit')
+
+const hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel')
+
+
+// class Ship extends CrewMember{
+//   constructor(shipName, type, functionality) {
+//     super(name, job, specialSkill, ship);
+//     this.shipName = shipName;
+//     this.type = type;
+//     this.functionality = functionality;
+//   }
+// }
 
 
 
 
+
+
+// crewMember1.mav
 
 // Begin by reading the tests and building a function that will full each one.
 // As you build, you might not have to build them in order, maybe you do...
